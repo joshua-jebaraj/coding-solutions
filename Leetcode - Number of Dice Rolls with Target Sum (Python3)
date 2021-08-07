@@ -1,0 +1,17 @@
+#d = number of throws, f = number of faces in the die, target = target sum
+def numRollsToTarget(d, f, target):
+    
+    #Create a dp array and initialize it with the number of ways of getting
+    #the target sum for 1 throw of the die
+    #Eg. f = 6, target = 8, initial dp = [0, 1, 1, 1, 1, 1, 1, 0, 0]
+    #Eg. f = 5, target = 8, initial dp = [0, 1, 1, 1, 1, 1, 0 ,0 ,0]
+    dp = [0] + [1 if i in range(1, f+1) else 0 for i in range(1, target+1)]
+        
+    for throws in range(2, d+1):
+        for i in range(target, 0, -1):
+            #dp[i] = sum of number of ways of getting target sum as [i-f to i-1]
+            #if i-f < 0 then start at 0 -> [0 to i-1]
+            dp[i] = sum(dp[max(0, i-f):i])
+                
+                
+    return dp[target] % (10**9 + 7)
