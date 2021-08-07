@@ -1,0 +1,9 @@
+#n = target sum, c = array of available coins
+def getWays(n, c):
+    # Write your code here
+    dp = [1] + [0]*n
+    for coin in c:
+        for i in range(coin, n+1):
+            dp[i] += dp[i-coin]
+            
+    return dp[n]
