@@ -12,13 +12,13 @@ def maxArrayValue(arr):
     max_total = 0
     
     for a in arr:
-        max_total = max(max_total, abs(a + max_so_far))
+        max_total = max(max_total, abs(a), abs(max_so_far + a))
         
-        if a + max_so_far < max_so_far:
+        if a + max_so_far < max_total:
             max_so_far = 0
-            
-        max_so_far += a
         
+        max_so_far += a
+            
     return max_total**2
     
 arr = [-1, 2, 3, 4, -5]
