@@ -1,0 +1,12 @@
+def unboundedKnapsack(k, arr):
+    # Write your code here
+    dp = [1] + [0]*k
+    
+    for a in arr:
+        for i in range(a, k+1):
+            dp[i] += dp[i-a]
+            
+    if dp[k] > 0:
+        return k
+    else:
+        return unboundedKnapsack(k-1, arr)
