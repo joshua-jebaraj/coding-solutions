@@ -33,8 +33,8 @@ def findCount(arr, n):
                 count += 1
 
         sec_subarray_sum = 0
-        e = s + 1
         s += 1
+        e = s + 1
      
     return count
  
