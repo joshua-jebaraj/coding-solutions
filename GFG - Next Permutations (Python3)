@@ -1,0 +1,16 @@
+def next_greatest(self, arr, key):
+        for j in range(len(arr)-1, -1, -1):
+            if arr[j] > key:
+                return j
+    
+def nextPermutation(self, N, arr):
+      i = len(arr)-1
+      while i>0 and arr[i-1] >= arr[i]:
+          i-=1
+            
+      if i==0:
+          return [] + sorted(arr)
+      else:
+          index = self.next_greatest(arr, arr[i-1])
+          arr[i-1], arr[index] = arr[index], arr[i-1]
+          return arr[:i] + sorted(arr[i:])
