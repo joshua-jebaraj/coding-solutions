@@ -1,0 +1,15 @@
+def gcd(m, n):
+    while (m!=n):
+        if m>n:
+            m-=n
+        else:
+            n-=m      
+    return n
+        
+        
+def lcm(m, n):
+    return (m // gcd(m, n))* n
+        
+        
+print(gcd(10, 15))
+print(lcm(10, 15))
