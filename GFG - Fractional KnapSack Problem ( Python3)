@@ -1,0 +1,16 @@
+def fractionalknapsack(self, W, Items, n):
+        # code here
+        profit = 0
+        Items = [] + sorted(Items, key = lambda X : X.value / X.weight, reverse = True)
+        
+        for item in Items:
+            if W - item.weight > 0:
+                W -= item.weight
+                profit += item.value
+                
+            elif W - item.weight <= 0:
+                fraction = W / item.weight
+                profit += item.value * fraction
+                break
+            
+        return profit
