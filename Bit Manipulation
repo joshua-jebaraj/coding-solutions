@@ -1,0 +1,134 @@
+1. XOR of numbers from 1-n (Shortcut):
+int computeXOR(int n)
+{
+    if (n % 4 == 0)
+        return n;
+    if (n % 4 == 1)
+        return 1;
+    if (n % 4 == 2)
+        return n + 1;
+    else
+        return 0;
+}
+
+2. Function to check if x is power of 2
+bool isPowerOfTwo(int x)
+{
+     // First x in the below expression is
+     // for  the case when x is 0
+     return x && (!(x & (x - 1)));
+}
+ All the power of 2 have only single bit set e.g. 16 (00010000). 
+ If we minus 1 from this, all the bits from LSB to set bit get toggled, i.e., 16-1 = 15 (00001111). 
+ Now if we AND x with (x-1) and the result is 0 then we can say that x is power of 2 otherwise not. 
+ We have to take extra care when x = 0.
+
+3. The Quickest way to swap two numbers: 
+a ^= b;
+b ^= a; 
+a ^= b;
+
+4. Find the most significant set bit in O(1) time
+int setBitNumber(int n)
+{
+    // To find the position
+    // of the most significant
+    // set bit
+    int k = (int)(log2(n));
+ 
+    // To return the the value
+    // of the number with set
+    // bit at k-th position
+    return 1 << k;
+}
+
+5. Set a bit in the number ‘num’ :
+void set(int & num,int pos)
+{
+     // First step is shift '1', second
+     // step is bitwise OR
+     num |= (1 << pos);
+}
+
+6. Unset/clear a bit at n’th position in the number ‘num’ : 
+void unset(int &num,int pos)
+{
+    //Second step is to bitwise and this  number with given number
+    num &= (~(1 << pos));
+}
+
+7. Toggling a bit at nth position :
+void toggle(int &num,int pos)
+{
+    num ^= (1 << pos);
+}
+
+8. Checking if bit at nth position is set or unset: 
+bool at_position(int num,int pos)
+{
+    bool bit = num & (1<<pos);
+    return bit;
+}
+
+9. Inverting every bit of a number/1’s complement: 
+int main()
+{
+    int num = 4;
+ 
+    // Inverting every bit of number num
+    cout << (~num);
+    return 0;
+}
+
+9.5. Procedures for Binary Subtraction by 1’s Complement
+- Write the 1’s complement of the subtrahend (smaller number/ number at the right side of minus sign)
+- Then add the 1’s complement subtrahend with the minuend (larger number)
+- If the result has a carryover, then add that carry over in the least significant bit
+- If there is no carryover, then take the 1’s complement of the resultant, and it is negative.
+
+10. Two’s complement of the number: 2’s complement of a number is 1’s complement + 1.
+int main()
+{
+    int num = 4;
+    int twos_complement = -num;
+    cout << "This is two's complement " << twos_complement << endl;
+    cout << "This is also two's complement " << (~num+1) << endl;
+    return 0;
+}
+
+11. Stripping off the lowest set bit :
+void strip_last_set_bit(int &num)
+{
+    num = num & (num-1);
+}
+
+12. Getting lowest set bit of a number:
+int lowest_set_bit(int num)
+{
+    int ret = num & (-num);
+    return ret;
+}
+
+13. Divide by 2 using right shift operator:
+14. Multiply by 2 using left shift operator:
+
+15. Upper case English alphabet to lower case:
+ch |= ' ';
+
+16. Lower case English alphabet to upper case:
+ch &= '_’ ;
+
+17. Count set bits in integer (Brian Kernighan’s algorithm):
+int countSetBits(int x)
+{
+    int count = 0;
+    while (x)
+    {
+        x &= (x-1);
+        count++;
+    }
+    return count;
+}
+
+18. 
+
