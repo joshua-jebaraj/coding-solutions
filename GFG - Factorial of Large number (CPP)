@@ -1,0 +1,27 @@
+void multiply(int i, vector<int>* res) {
+  int carry = 0;
+  int j = 0;
+        
+  while (j<(*res).size()) {
+    int prod = (*res)[j]*i;
+    (*res)[j] = (prod + carry)%10;
+    carry = (prod + carry)/10;
+    j++;
+  } 
+        
+  while (carry) {
+    (*res).push_back(carry%10);
+    carry/=10;
+  }
+}
+
+vector<int> factorial(int N) {
+  // code here
+  vector<int> res{1};
+  for (int i=2; i<=N; i++) {
+      multiply(i, &res);
+  }
+        
+  reverse(res.begin(), res.end());
+  return res;
+}
